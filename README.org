@@ -47,9 +47,10 @@ $ ./glip build -o runme
 If you need to use a package at a specific version it is best to fork
 the package and use a little git voodoo. As an example we'll fork the
 package "github.com/keltia/leftpad" and force it to be at commit
-=c03425e=. Start by forking on GitHub then make a local clone.
+=c03425e=. Start by forking on GitHub, then make a local clone.
 
 #+BEGIN_SRC sh
+$ git clone git@github.com:eddieh/leftpad.git && cd leftpad
 $ git reset --hard c03425e
 $ git push -f origin master
 #+END_SRC
