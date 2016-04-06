@@ -1,4 +1,4 @@
-#+TITLE: Glip
+* Glip
 
 ** Intuduction
 Glip is /Go Local In Project/. It keeps your Go packages local to the
