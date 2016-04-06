@@ -1,17 +1,19 @@
 #+TITLE: Glip
 
 * Intuduction
-Glip is *G*o *L*ocal *I*n *P*roject. It keeps your Go packages local
-to the project you're working on, so that you can have two or more Go
-project depend on different version of the same package.
+Glip is /Go Local In Project/. It keeps your Go packages local to the
+project you're working on, so that you can have two or more Go
+projects depend on different version of the same package.
 
 The =glip= command simply proxies to the =go= command. You must use it
 in place of =go=.
 
 * How to use Glip
-Simply import the package you want in the file you want to use it.
+Simply import the packages you want, in the files you will use them in.
 
 #+BEGIN_SRC go
+package main
+
 import (
         "fmt"
         fb "github.com/google/flatbuffers/go"
@@ -35,7 +37,7 @@ Then build with =glip=
 $ ./glip build -o runme
 #+END_SRC
 
-*IMPORTANT* If you're testing =glip= inside this directory named
- =glip= us must specify the =-o <executable>= option otherwise you
+*IMPORTANT:* If you're testing =glip= inside this directory named
+ =glip=, you must specify the =-o <executable>= option otherwise you
  will overwrite =glip=. If the directory has any other name you don't
  need the =-o <executable>= option.
