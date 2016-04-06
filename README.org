@@ -1,0 +1,41 @@
+#+TITLE: Glip
+
+* Intuduction
+Glip is *G*o *L*ocal *I*n *P*roject. It keeps your Go packages local
+to the project you're working on, so that you can have two or more Go
+project depend on different version of the same package.
+
+The =glip= command simply proxies to the =go= command. You must use it
+in place of =go=.
+
+* How to use Glip
+Simply import the package you want in the file you want to use it.
+
+#+BEGIN_SRC go
+import (
+        "fmt"
+        fb "github.com/google/flatbuffers/go"
+)
+
+func main() {
+	builder := fb.NewBuilder(0)
+	fmt.Println("%v", builder)
+}
+#+END_SRC
+
+Then tell =glip= to fetch any packages you're using.
+
+#+BEGIN_SRC sh
+$ ./glip get
+#+END_SRC
+
+Then build with =glip=
+
+#+BEGIN_SRC sh
+$ ./glip build -o runme
+#+END_SRC
+
+*IMPORTANT* If you're testing =glip= inside this directory named
+ =glip= us must specify the =-o <executable>= option otherwise you
+ will overwrite =glip=. If the directory has any other name you don't
+ need the =-o <executable>= option.

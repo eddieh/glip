@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export GOPATH="$PWD/go_modules"
+export GOBIN="$GOPATH/bin"
+go "$@"
