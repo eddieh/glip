@@ -1,6 +1,6 @@
 #+TITLE: Glip
 
-* Intuduction
+** Intuduction
 Glip is /Go Local In Project/. It keeps your Go packages local to the
 project you're working on, so that you can have two or more Go
 projects depend on different version of the same package.
@@ -8,7 +8,7 @@ projects depend on different version of the same package.
 The =glip= command simply proxies to the =go= command. You must use it
 in place of =go=.
 
-* How to use Glip
+** How to use Glip
 Simply import the packages you want, in the files you will use them in.
 
 #+BEGIN_SRC go
