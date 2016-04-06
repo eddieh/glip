@@ -25,7 +25,8 @@ func main() {
 }
 #+END_SRC
 
-Then tell =glip= to fetch any packages you're using.
+Then tell =glip= to fetch any packages you're using. This will store
+the packages in a directory called =go_modules= just like =npm= does.
 
 #+BEGIN_SRC sh
 $ ./glip get
