@@ -42,3 +42,43 @@ $ ./glip build -o runme
  =glip=, you must specify the =-o <executable>= option otherwise you
  will overwrite =glip=. If the directory has any other name you don't
  need the =-o <executable>= option.
+
+** Package Pinning: best practice
+If you need to use a package at a specific version it is best to fork
+the package and use a little git voodoo. As an example we'll fork the
+package "github.com/keltia/leftpad" and force it to be at commit
+=c03425e=. Start by forking on GitHub then make a local clone.
+
+#+BEGIN_SRC sh
+$ git reset --hard c03425e
+$ git push -f origin master
+#+END_SRC
+
+The new package "github.com/eddieh/leftpad" is now ready to use.
+
+#+BEGIN_SRC go
+package main
+
+import (
+        "fmt"
+        fb "github.com/google/flatbuffers/go"
+        lp "github.com/eddieh/leftpad"
+)
+
+func main() {
+	builder := fb.NewBuilder(0)
+        fmt.Println(lp.LeftPadStr("=", 40, "="))
+	fmt.Println("%v", builder)
+        fmt.Println(lp.LeftPadStr("=", 40, "="))
+}
+#+END_SRC
+
+Now use =glip= to fetch the packages and build.
+
+#+BEGIN_SRC sh
+$ ./glip get
+$ ./glip build -o runme
+#+END_SRC
+
+As a bonus leftpad will never vanish and break your build — unless you
+delete your fork. Don't delete your fork ;)
